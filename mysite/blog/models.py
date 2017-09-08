@@ -5,6 +5,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from taggit.managers import TaggableManager
 
 class PublishedManager(models.Manager):
     def get_queryset(self):
@@ -15,6 +16,7 @@ class Post(models.Model):
     
     objects = models.Manager()       # The default manager
     published = PublishedManager()     # Our custom manager
+    tags = TaggableManager()
 
     STATUS_CHOICES = (
             ('draft', 'Draft'),
@@ -53,3 +55,4 @@ class Comment(models.Model):
     
     def __str__(self):
         return 'Comment by {} on {}'.format(self.name, self.post)
+
