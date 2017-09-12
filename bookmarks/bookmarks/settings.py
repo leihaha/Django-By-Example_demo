@@ -38,7 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles', 
+    'django.contrib.staticfiles',
+    'social.apps.django_app.default',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -69,6 +70,13 @@ TEMPLATES = [
         },
     },
 ]
+
+
+AUTHETICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'django.authentication.EmailAuthBackend',
+    'social.backends.google.GoogleOAuth2',
+)
 
 WSGI_APPLICATION = 'bookmarks.wsgi.application'
 
@@ -114,4 +122,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-
+# Google Consumer Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1093984852573-oamj0v3mfkihprcnm9m7fhhrvqbpdtdt.apps.googleusercontent.com'
+#Google Consumer Secret
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'kmFVsKNOTHkEmhUc5L0S_S22'
